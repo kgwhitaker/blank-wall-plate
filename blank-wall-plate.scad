@@ -32,6 +32,9 @@ tab_thickness = 5;
 //1.2 = 120% of the opening.
 plate_size_pct = 1.20;
 
+// Tab Nub Diameter
+nub_diameter = 4;
+
 
 // *** "Private" variables ***
 /* [Hidden] */
@@ -43,7 +46,7 @@ $fs = 0.4;
 // Calculated Global Vars
 
 // Snap in height is the depth of the opening plus a nub to hold in the plate.
-tab_height = opening_depth + 4;
+tab_height = opening_depth + nub_diameter;
 
 // Overlap tolerance so that there are no gaps between objects.
 
@@ -80,9 +83,34 @@ module snap_in_tabs() {
 
     // Place tabs at each corner, with their bottom at the top of the wall plate
     for (x = x_offsets, y = y_offsets) {
+        echo(str("Placing tab at: ", x, ", ", y));
         color("red")
             translate([x, y, plate_thickness])
                 cuboid([tab_thickness, tab_width, tab_height], anchor=BOTTOM);
+
+        // Add a nub to help hold the tab in place
+        if (x < 0) {
+            nub_x = x - tab_thickness/2;
+            translate([nub_x, y + tab_width/2, plate_thickness + tab_height - (nub_diameter / 2)])
+            {
+                rotate([90, 0, 0])
+                    cylinder(d=nub_diameter, h=tab_width, anchor=BOTTOM);
+            }
+
+        } else {
+            nub_x = x + tab_thickness/2;
+            translate([nub_x, y + tab_width/2, plate_thickness + tab_height - (nub_diameter / 2)])
+            {
+                rotate([90, 0, 0])
+                    cylinder(d=nub_diameter, h=tab_width, anchor=BOTTOM);
+            }
+        }
+        // translate([nub_x, y + tab_width/2, plate_thickness + tab_height - (nub_diameter / 2)])
+        // {
+        //     rotate([90, 0, 0])
+        //         cylinder(d=nub_diameter, h=tab_width, anchor=BOTTOM);
+        // }
+
     }
 }
 
