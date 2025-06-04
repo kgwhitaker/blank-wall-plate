@@ -49,6 +49,7 @@ $fs = 0.4;
 tab_height = opening_depth + nub_diameter;
 
 // Overlap tolerance so that there are no gaps between objects.
+object_overlap = 0.1;
 
 
 //
@@ -91,29 +92,24 @@ module snap_in_tabs() {
         // Add a nub to help hold the tab in place
         if (x < 0) {
             nub_x = x - tab_thickness/2;
-            translate([nub_x, y + tab_width/2, plate_thickness + tab_height - (nub_diameter / 2)])
-            {
-                rotate([90, 0, 0])
-                    cylinder(d=nub_diameter, h=tab_width, anchor=BOTTOM);
-            }
-
+            tab_nub(x, y, nub_x);
         } else {
             nub_x = x + tab_thickness/2;
-            translate([nub_x, y + tab_width/2, plate_thickness + tab_height - (nub_diameter / 2)])
-            {
-                rotate([90, 0, 0])
-                    cylinder(d=nub_diameter, h=tab_width, anchor=BOTTOM);
-            }
+            tab_nub(x, y, nub_x);
         }
-        // translate([nub_x, y + tab_width/2, plate_thickness + tab_height - (nub_diameter / 2)])
-        // {
-        //     rotate([90, 0, 0])
-        //         cylinder(d=nub_diameter, h=tab_width, anchor=BOTTOM);
-        // }
-
     }
 }
 
+//
+// Creates a tab nub
+//
+module tab_nub(tab_x, tab_y, nub_x) {
+    translate([nub_x, tab_y + tab_width/2, plate_thickness + tab_height - (nub_diameter / 2)])
+    {
+        rotate([90, 0, 0])
+            cylinder(d=nub_diameter, h=tab_width, anchor=BOTTOM);
+    }
+}
 
 // 
 // Main module that creates the model.
