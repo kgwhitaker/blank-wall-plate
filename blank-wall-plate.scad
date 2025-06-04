@@ -1,17 +1,17 @@
 //
-// Blank wall plate for the removed outlet in the back of the oven.
-//
-// Opening of 56x86x10mm
+// Blank wall plate for the removed power outlet that did not have anything to attach a 
+// traditional blank plate to.  
 //
 
 // The Belfry OpenScad Library, v2:  https://github.com/BelfrySCAD/BOSL2
+// This library must be installed in your instance of OpenScad to use this model.
 include <BOSL2/std.scad>
 
 // *** Model Parameters ***
 /* [Model Parameters] */
 
 // Width of the opening that is being covered.
-opening_width = 57;
+opening_width = 55;
 
 // Height of the opening that is being covered.
 opening_height = 93;
@@ -25,16 +25,15 @@ plate_thickness = 3;
 // Snap in tab width.  This is the width of the tabs that will snap into the opening.
 tab_width = 10;
 
-// Snap in tab depth.  This is the depth of the tabs that will snap into the opening.
+// Snap in tab thickness.  This is the depth of the tabs that will snap into the opening.
 tab_thickness = 5; 
 
 // The external size of the wall plate driven by the opening size.  
-//1.2 = 120% of the opening.
+// 1.2 = 120% of the opening.
 plate_size_pct = 1.20;
 
 // Tab Nub Diameter
 nub_diameter = 4;
-
 
 // *** "Private" variables ***
 /* [Hidden] */
@@ -47,10 +46,6 @@ $fs = 0.4;
 
 // Snap in height is the depth of the opening plus a nub to hold in the plate.
 tab_height = opening_depth + nub_diameter;
-
-// Overlap tolerance so that there are no gaps between objects.
-object_overlap = 0.1;
-
 
 //
 // Creates the wall plate.
