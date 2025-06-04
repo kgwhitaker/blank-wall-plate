@@ -11,10 +11,10 @@ include <BOSL2/std.scad>
 /* [Model Parameters] */
 
 // Width of the opening that is being covered.
-opening_width = 56;
+opening_width = 57;
 
 // Height of the opening that is being covered.
-opening_height = 86;
+opening_height = 93;
 
 // Depth of the opening.  This is used to make the snap-in tabs.
 opening_depth = 10;
