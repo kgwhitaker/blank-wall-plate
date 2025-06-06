@@ -35,3 +35,12 @@ This model is built using the tools listed below. Install these tools and you ca
 
 ## Sample Output
 
+Back side of the blank wall plate.
+
+[Blank Wall Plate Back](images/blank-wall-plate.jpeg)
+
+Blank wall plate installed.
+
+[Installed Blank Wall Plate](images/blank-wall-plate-installed.jpeg)
+
+
